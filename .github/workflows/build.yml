@@ -31,7 +31,7 @@ jobs:
 
       - name: Set environment variables
         env:
-          SECRET_KEY: ${{ SECRET_KEY }}
+          SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
         run: |
           echo "export SECRET_KEY=${SECRET_KEY}" >> $GITHUB_ENV
 

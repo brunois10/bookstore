@@ -29,8 +29,11 @@ jobs:
         shell: bash
         run: python -m poetry install
 
-      - name: Set Django SECRET_KEY
-        run: echo "export SECRET_KEY='bookstore_dev'" >> $GITHUB_ENV
+      - name: Set environment variables
+        env:
+          SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+        run: |
+          echo "export SECRET_KEY=${SECRET_KEY}" >> $GITHUB_ENV
 
       - name: Test
         run: |

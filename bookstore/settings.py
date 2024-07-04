@@ -17,7 +17,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # DEBUG = int(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ebac-bookstore-api10-17edf4dea488.herokuapp.com']
@@ -49,9 +49,9 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
-## if DEBUG and not is_running_tests():
-##   INSTALLED_APPS += ['debug_toolbar']
-##    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
+if DEBUG and not is_running_tests():
+    INSTALLED_APPS += ['debug_toolbar']
+    MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
 
 ROOT_URLCONF = "bookstore.urls"
 

@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "order",
     "product",
-    "django-extensions",
+    "django_extensions",
     "rest_framework.authtoken",
 ]
 

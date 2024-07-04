@@ -155,11 +155,3 @@ INTERNAL_IPS = [
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ebac-bookstore-api10-17edf4dea488.herokuapp.com']
 
 RUNNING_TESTS = 'test' in sys.argv
-
-if DEBUG and not RUNNING_TESTS:
-    INSTALLED_APPS += [
-        'debug_toolbar',
-    ]
-    MIDDLEWARE += [
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
-    ]

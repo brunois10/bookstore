@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +25,7 @@ SECRET_KEY = os.environ.setdefault("SECRET_KEY", "7r8j_6qe=glr7_4a0!8q!joyj8(95%
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
 
 ALLOWED_HOSTS = []
 
@@ -41,7 +43,6 @@ INSTALLED_APPS = [
     "django_extensions",
     "order",
     "product",
-    "debug_toolbar",
     "rest_framework.authtoken"
 ]
 
@@ -53,7 +54,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware"
 ]
 
@@ -80,6 +80,15 @@ WSGI_APPLICATION = "bookstore.wsgi.application"
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
+RUNNING_TESTS = 'test' in sys.argv
+
+if DEBUG and not RUNNING_TESTS:
+    INSTALLED_APPS += [
+        'debug_toolbar',
+    ]
+    MIDDLEWARE += [
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    ]
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 

@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.setdefault("SECRET_KEY", "7r8j_6qe=glr7_4a0!8q!joyj8(95%_0*cda)7moq&ol@(73@@")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 
 ALLOWED_HOSTS = []
@@ -82,13 +82,6 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 RUNNING_TESTS = 'test' in sys.argv
 
-if DEBUG and not RUNNING_TESTS:
-    INSTALLED_APPS += [
-        'debug_toolbar',
-    ]
-    MIDDLEWARE += [
-        'debug_toolbar.middleware.DebugToolbarMiddleware',
-    ]
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -160,3 +153,11 @@ INTERNAL_IPS = [
 ]
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ebac-bookstore-api10-17edf4dea488.herokuapp.com']
+
+if DEBUG and not RUNNING_TESTS:
+    try:
+        import debug_toolbar
+        INSTALLED_APPS += ['debug_toolbar']
+        MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
+    except ImportError:
+        pass

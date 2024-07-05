@@ -150,4 +150,4 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'project-ebookstore-api-e41e0a5e44ac.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ebac-bookstore-api10-e357a3fb3fc5.herokuapp.com']

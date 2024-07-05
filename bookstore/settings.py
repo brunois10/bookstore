@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
-import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.setdefault("SECRET_KEY", "7r8j_6qe=glr7_4a0!8q!joyj8(95%_0*cda)7moq&ol@(73@@")
+SECRET_KEY = os.environ.setdefault("SECRET_KEY", "n39p#5it9alvt9b7+!*=h6&m^rs!g2c1gjg!wi3l-@pv+7")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -38,10 +37,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "rest_framework",
     "django_extensions",
     "order",
     "product",
+    "debug_toolbar",
+    "rest_framework",
     "rest_framework.authtoken"
 ]
 
@@ -77,8 +77,6 @@ TEMPLATES = [
 WSGI_APPLICATION = "bookstore.wsgi.application"
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
-
 
 
 # Database
@@ -151,14 +149,4 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ebac-bookstore-api10-17edf4dea488.herokuapp.com']
-
-RUNNING_TESTS = 'test' in sys.argv
-
-if DEBUG and not RUNNING_TESTS:
-    try:
-        import debug_toolbar
-        INSTALLED_APPS += ['debug_toolbar']
-        MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware']
-    except ImportError:
-        pass
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ebac-bookstore-api10-e357a3fb3fc5.herokuapp.com']

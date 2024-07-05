@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import factory
-
 from product.models import Product
 from product.models import Category
 

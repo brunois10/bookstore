@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import factory
 
+import factory
 from django.contrib.auth.models import User
 from product.factories import ProductFactory
 
